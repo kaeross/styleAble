@@ -1,5 +1,6 @@
-@extends('base')
+@extends('layouts.app')
 
+@section('content')
 <div id="pcoded" class="pcoded">
     @include('parts.preloader')
     <div class="pcoded-overlay-box"></div>
@@ -166,8 +167,7 @@
                                     <div class="row">
                                         @yield('overview')
 
-                                        @yield('content')
-
+                                        @yield('body')
                                     </div>
                                     <!-- [ page content ] end -->
                                 </div>
@@ -229,4 +229,5 @@
 </div>
 <![endif]-->
 <!-- Warning Section Ends -->
+@endsection
 
