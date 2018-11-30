@@ -55,7 +55,7 @@
                                 <div class="media">
                                     <img class="img-radius" data-cfsrc="{{ url('/') }}images/avatar-4.jpg" alt="Generic placeholder image" style="display:none;visibility:hidden;"><noscript><img class="img-radius" src="images/avatar-4.jpg" alt="Generic placeholder image"></noscript>
                                     <div class="media-body">
-                                        <h5 class="notification-user">John Doe</h5>
+                                        <h5 class="notification-user">Kate</h5>
                                         <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
                                         <span class="notification-time">30 minutes ago</span>
                                     </div>
