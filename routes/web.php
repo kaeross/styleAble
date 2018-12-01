@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/tutorial', function () {
-    return view('pages.tutorial');
-});
+//Route::get('/tutorial', 'LessonController');
