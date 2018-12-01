@@ -33,6 +33,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/widget.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 </head>
 <body>
 <div id="app">
