@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 
 class TutorialsController extends Controller
 {
-    public function getAllTutorials() {
+    public function topicsList() {
         $tutorials = \App\Tutorial::all();
-        return view('pages.tutorial', $tutorials);
+        return view('pages.topics', ['tutorials' => $tutorials]);
     }
 
     public function getTutorialByTopic($topic)
     {
+        $tutorials = \App\Tutorial::all();
         $tutorial = \App\Tutorial::where('Topic', $topic)->get()->first();
-        return view('pages.tutorial', $tutorial);
+        return view('pages.tutorial', [
+            'tutorialbytopic'=>$tutorial,
+            'tutorials' => $tutorials
+        ]);
     }
 }
 

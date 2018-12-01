@@ -1,12 +1,12 @@
-@extends('home')
+@extends('base')
 
 @section('title')
-    {{ $Topic }}
+    {{ $tutorialbytopic->Topic }}
 @endsection
 
 
 @section('subtitle')
-    {{ $Subtitle }}
+    {{ $tutorialbytopic->Subtitle }}
 @endsection
 
 
@@ -18,7 +18,7 @@
                     <div class="col">
                         <h6 class="m-b-25">Lorem Ipsum</h6>
                         <h3 class="f-w-700 text-c-blue">Overview</h3>
-                        <p class="mb">{!! $Overview !!}</p>
+                        <p class="mb">{!! $tutorialbytopic->Overview !!}</p>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-eye bg-c-blue waves-effect md-trigger" data-modal="modal-2" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-1']);"></i>
