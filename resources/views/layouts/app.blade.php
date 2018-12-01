@@ -24,10 +24,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
     <!-- waves.css -->
     <link rel="stylesheet" href="{{asset('css/waves.min.css')}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{asset('css/component.css')}}" type="text/css"
     <!-- feather icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/feather.css')}}">
     <!-- font-awesome-n -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome-n.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/icofont.css')}}">
     <!-- Chartlist chart css -->
     <link rel="stylesheet" href="{{asset('css/chartist.css')}}" type="text/css" media="all">
     <!-- Prettify.css -->
@@ -36,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/widget.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+    @yield('styles')
 </head>
 <body>
 <div id="app">
@@ -67,6 +70,7 @@
 <!-- Code block prettify js -->
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <!-- Custom js -->
+@yield('scripts')
 <script src="{{asset('js/pcoded.min.js')}}"></script>
 <script src="{{asset('js/vertical-layout.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom-dashboard.min.js')}}"></script>
