@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome-n.min.css')}}">
     <!-- Chartlist chart css -->
     <link rel="stylesheet" href="{{asset('css/chartist.css')}}" type="text/css" media="all">
+    <!-- Prettify.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/prettify.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/widget.css')}}">
@@ -62,6 +64,8 @@
 <script src="{{asset('js/amcharts.js')}}"></script>
 <script src="{{asset('js/serial.js')}}"></script>
 <script src="{{asset('js/light.js')}}"></script>
+<!-- Code block prettify js -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <!-- Custom js -->
 <script src="{{asset('js/pcoded.min.js')}}"></script>
 <script src="{{asset('js/vertical-layout.min.js')}}"></script>

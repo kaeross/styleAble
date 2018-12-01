@@ -39,13 +39,19 @@
                         <h3 class="m-b-25 text-c-blue">Example</h3>
                         <h6 class="f-w-700">Overview</h6>
                         <p class="">Mizzen handsomely long boat bilged on her anchor no prey, no pay fluke prow gangway avast Admiral of the Black bowsprit Jolly Roger bilge water hail-shot poop deck. Barque no prey, no pay yo-ho-ho scuttle swab booty blow the man down ballast knave cog yawl quarter pinnace belay coxswain. American Main lugsail lugger main sheet hulk provost topmast man-of-war belaying pin bilged on her anchor coxswain execution dock aft Shiver me timbers spike.</p>
-                        <pre>
-                            <code>
-.style {
-    color: #ddd
+                        <pre class="prettyprint lang-css"><code>
+.class {
+    color: #ddd;
 }
-                            </code>
-                        </pre>
+
+#id {
+    margin: 0 auto 1em;
+}
+
+element {
+    border-radius: 100%;
+}
+                            </code></pre>
                     </div>
                 </div>
             </div>
