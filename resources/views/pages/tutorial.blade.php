@@ -11,7 +11,7 @@
 
 
 @section('overview')
-    <div class="col-md-12 col-xl-4">
+    <div class="col-md-12">
         <div class="card comp-card">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -31,7 +31,7 @@
 @endsection
 
 @section('body')
-    <div class="col-md-12 col-xl-4">
+    <div class="col-md-12">
         <div class="card comp-card">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -39,10 +39,13 @@
                         <h3 class="m-b-25 text-c-blue">Example</h3>
                         <h6 class="f-w-700">Overview</h6>
                         <p class="">Mizzen handsomely long boat bilged on her anchor no prey, no pay fluke prow gangway avast Admiral of the Black bowsprit Jolly Roger bilge water hail-shot poop deck. Barque no prey, no pay yo-ho-ho scuttle swab booty blow the man down ballast knave cog yawl quarter pinnace belay coxswain. American Main lugsail lugger main sheet hulk provost topmast man-of-war belaying pin bilged on her anchor coxswain execution dock aft Shiver me timbers spike.</p>
-
-                        <pre><code>
-                            adsfljaks
-                            </code></pre>
+                        <pre>
+                            <code>
+.style {
+    color: #ddd
+}
+                            </code>
+                        </pre>
                     </div>
                 </div>
             </div>
