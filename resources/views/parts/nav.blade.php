@@ -9,7 +9,7 @@
                     //]]>
                 </script>
                 <script type="text/javascript" src="js/mirage2.min.js"></script>
-                <img class="img-fluid" data-cfsrc="{{ url('/') }}/images/logo-stylable.png" alt="Theme-Logo" style="display:none;visibility:hidden;"><noscript><img class="img-fluid" src="images/logo-stylable.png" alt="Theme-Logo"></noscript>
+                <img class="img-fluid" data-cfsrc="{{ url('/') }}/images/logo-new.png" alt="Theme-Logo" style="display:none;visibility:hidden;"><noscript><img class="img-fluid" src="images/logo-new.png" alt="Theme-Logo"></noscript>
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="feather icon-menu icon-toggle-right"></i>

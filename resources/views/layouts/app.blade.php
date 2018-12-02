@@ -16,7 +16,7 @@
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="colorlib">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <!-- Google font-->
     <link href="{{asset('css/css_1.css')}}" rel="stylesheet">
     <link href="{{asset('css/css.css')}}" rel="stylesheet">
