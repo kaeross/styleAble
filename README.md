@@ -1,5 +1,6 @@
 
-![Styleable](https://github.com/kaeross/styleAble/blob/master/public/images/logo-new.png) { StyleAble }
+![Styleable](https://github.com/kaeross/styleAble/blob/master/public/images/logo-new.png)  
+# { StyleAble }
 
 
 ![Laravel version](https://img.shields.io/badge/laravel-5.7-blue.svg)
