@@ -10,7 +10,7 @@
 
 ## About StyleAble
 
-StyleAble is a Laravel based web application to help people learn about web styling and CSS. We aim to have many different interactive lessons and challenges to test your knowledge.
+StyleAble is a Laravel based web application to help people learn about web styling and CSS. Aiming to have many different interactive lessons and challenges to test your knowledge.
 
 
 ## Contributing
