@@ -2,15 +2,7 @@
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
         <div class="navbar-logo">
-            <a href="index.html">
-                <script type="text/javascript">
-                    //<![CDATA[
-                    window.__mirage2 = {petok:"d22feb26625edb8f83503452d8ef6025d7244f0b-1543238795-1800"};
-                    //]]>
-                </script>
-                <script type="text/javascript" src="js/mirage2.min.js"></script>
-                <img class="img-fluid" data-cfsrc="{{ url('/') }}/images/logo-new.png" alt="Theme-Logo" style="display:none;visibility:hidden;"><noscript><img class="img-fluid" src="images/logo-new.png" alt="Theme-Logo"></noscript>
-            </a>
+            <a href="index.html">{ StyleAble }</a>
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="feather icon-menu icon-toggle-right"></i>
             </a>
