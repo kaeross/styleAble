@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('switchery');
 
 window.Vue = require('vue');
 
@@ -17,7 +17,7 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('nav', require('./components/nav.vue'));
+// Vue.component('nav', require('./components/nav.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 
