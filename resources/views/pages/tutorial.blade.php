@@ -12,30 +12,16 @@
 
 @section('overview')
     <div class="col-md-12">
+        {{--<div class="text-right p-b-5 text-c-blue">--}}
+            {{--<a><span class="pcoded-micon"><i class="feather icon-edit-1"></i></span> Edit tutorial</a>--}}
+        {{--</div>--}}
+
         <div class="card comp-card">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h6 class="m-b-25">Lorem Ipsum</h6>
                         <h3 class="f-w-700 text-c-blue">Overview</h3>
                         <p class="mb">{!! $tutorialbytopic->Overview !!}</p>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-eye bg-c-blue waves-effect md-trigger" data-modal="modal-2" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-1']);"></i>
-                    </div>
-                    <div class="md-modal md-effect-2" id="modal-2">
-                        <div class="md-content">
-                            <h3>Modal Dialog</h3>
-                            <div>
-                                <p>This is a modal window. You can do the following things with it:</p>
-                                <ul>
-                                    <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-                                    <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
-                                    <li><strong>Close:</strong> click on the button below to close the modal.</li>
-                                </ul>
-                                <button type="button" class="btn btn-primary waves-effect md-close">Close</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
