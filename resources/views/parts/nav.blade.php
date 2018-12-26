@@ -2,7 +2,7 @@
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
         <div class="navbar-logo">
-            <a href="index.html">{ StyleAble }</a>
+            <a href="index.html" style="text-transform: none">{ StyleAble }</a>
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="feather icon-menu icon-toggle-right"></i>
             </a>
