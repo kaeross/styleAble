@@ -9,24 +9,6 @@
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">Dashboard</span>
                     </a>
-                    {{--<ul class="pcoded-submenu">--}}
-                        {{--<li class="active">--}}
-                            {{--<a href="index.html" class="waves-effect waves-dark">--}}
-                                {{--<span class="pcoded-mtext">Default</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="dashboard-crm.html" class="waves-effect waves-dark">--}}
-                                {{--<span class="pcoded-mtext">CRM</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="dashboard-analytics.html" class="waves-effect waves-dark">--}}
-                                {{--<span class="pcoded-mtext">Analytics</span>--}}
-                                {{--<span class="pcoded-badge label label-info ">NEW</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
                 </li>
                 <li class="pcoded-hasmenu">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -293,69 +275,14 @@
                 {{--</ul>--}}
             {{--</li>--}}
 
-            <div class="pcoded-navigation-label">Forms</div>
+            <div class="pcoded-navigation-label">Add new topic</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="pcoded-hasmenu">
-                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-        									<span class="pcoded-micon">
-        										<i class="feather icon-clipboard"></i>
-        									</span>
-                        <span class="pcoded-mtext">Form</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class=" ">
-                            <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Components</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="form-elements-add-on.html" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Add-On</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="form-elements-advance.html" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Advance</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="form-validation.html" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Validation</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" ">
-                    <a href="form-picker.html" class="waves-effect waves-dark">
-        									<span class="pcoded-micon">
-        										<i class="feather icon-edit-1"></i>
-        									</span>
-                        <span class="pcoded-mtext">Form Picker</span>
-                        <span class="pcoded-badge label label-warning">NEW</span>
-                    </a>
-                </li>
-                <li class=" ">
-                    <a href="form-select.html" class="waves-effect waves-dark">
-        									<span class="pcoded-micon">
-        										<i class="feather icon-feather"></i>
-        									</span>
-                        <span class="pcoded-mtext">Form Select</span>
-                    </a>
-                </li>
-                <li class=" ">
-                    <a href="form-masking.html" class="waves-effect waves-dark">
-        									<span class="pcoded-micon">
-        										<i class="feather icon-shield"></i>
-        									</span>
-                        <span class="pcoded-mtext">Form Masking</span>
-                    </a>
-                </li>
-                <li class=" ">
-                    <a href="form-wizard.html" class="waves-effect waves-dark">
-        									<span class="pcoded-micon">
-        										<i class="feather icon-tv"></i>
-        									</span>
-                        <span class="pcoded-mtext">Form Wizard</span>
+                    <a href="{{ url('/') }}/new" class="waves-effect waves-dark">
+                       <span class="pcoded-micon">
+                            <i class="feather icon-edit-1"></i>
+                        </span>
+                        <span class="pcoded-mtext">New</span>
                     </a>
                 </li>
             </ul>

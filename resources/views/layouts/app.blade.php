@@ -51,25 +51,15 @@
 <script src="{{asset('js/waves.min.js')}}"></script>
 <!-- jquery slimscroll js -->
 <script type="text/javascript" src="{{asset('js/jquery.slimscroll.js')}}"></script>
-<!-- Float Chart js
-<script src="{{asset('js/charts/jquery.flot.js')}}"></script>
-<script src="{{asset('js/charts/jquery.flot.categories.js')}}"></script>
-<script src="{{asset('js/charts/curvedLines.js')}}"></script>
-<script src="{{asset('js/charts/jquery.flot.tooltip.min.js')}}"></script> -->
-<!-- Chartlist charts
-<script src="{{asset('js/charts/chartist.js')}}"></script> -->
-<!-- amchart js
-<script src="{{asset('js/charts/amcharts.js')}}"></script>
-<script src="{{asset('js/charts/serial.js')}}"></script>
-<script src="{{asset('js/charts/light.js')}}"></script>-->
 <!-- Code block prettify js -->
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+@yield('additionalScripts')
 <!-- Custom js -->
-@yield('scripts')
 <script src="{{asset('js/pcoded.min.js')}}"></script>
 <script src="{{asset('js/vertical-layout.min.js')}}"></script>
-{{--<script type="text/javascript" src="{{asset('js/custom-dashboard.min.js')}}"></script>--}}
+
 <script type="text/javascript" src="{{asset('js/script.min.js')}}"></script>
+@yield('customScripts')
 </body>
 
 </html>

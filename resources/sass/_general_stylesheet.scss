@@ -1,3 +1,15 @@
+/**
+ Basic styles
+ */
+
+b, strong {
+    font-weight: 700;
+}
+
+h3 {
+
+}
+
 /**  =====================
       Notification css start
 ==========================  **/
@@ -4412,6 +4424,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
                 background-color: lighten($dark-layout-color,25%);
             }
         }
+
 
         &.display,
         &.order-column.stripe {
