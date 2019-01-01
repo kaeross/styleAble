@@ -9,7 +9,6 @@
 
 window.Vue = require('vue');
 
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -32,7 +31,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import editor from './components/Quill.vue'
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: { editor }
 });
+
+
+
 

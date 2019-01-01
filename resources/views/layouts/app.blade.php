@@ -40,13 +40,18 @@
     @yield('content')
 
 </div>
-<!-- Required Jquery -->
+<!-- Required JS -->
 <script data-cfasync="false" src="{{asset('js/email-decode.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
+
+<!-- Quill Scripts -->
+<script src="http://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+
+<!-- Custom bootstrap -->
 <script type="text/javascript" src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <!-- waves js-->
 <script src="{{asset('js/waves.min.js')}}"></script>
 <!-- jquery slimscroll js -->
@@ -55,6 +60,7 @@
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 @yield('additionalScripts')
 <!-- Custom js -->
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/pcoded.min.js')}}"></script>
 <script src="{{asset('js/vertical-layout.min.js')}}"></script>
 
