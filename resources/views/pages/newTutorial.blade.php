@@ -46,50 +46,7 @@
                     <div class="col-md-12">
                         <div id="wizard">
                             <section>
-                                <form class="wizard-form" id="verticle-wizard" action="#">
-                                    <h3> Basic information </h3>
-                                    <fieldset>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <label for="topic" class="block">Topic</label>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <input id="topic"  maxlength="20" name="topic" type="text" class="form-control" placeholder="This will be displayed in the navigation so make it snappy!">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <label for="subtitle" class="block">Subtitle</label>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <input maxlength="25" id="subtitle" name="subtitle" type="text" class="form-control threshold-1" placeholder="A short taster of what's to come...">
-                                            </div>
-                                        </div>
-
-                                    </fieldset>
-                                    <h3> Overview </h3>
-                                    <fieldset>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <label for="" class="block">Overview</label>
-                                            </div>
-                                            <editor id="overview" editor-style="min">
-                                                <p>Dragée pastry pudding chocolate bar. Wafer marzipan cupcake caramels gingerbread apple pie caramels. Apple pie ice cream brownie.</p>
-                                            </editor>
-                                        </div>
-                                    </fieldset>
-                                    <h3> Example </h3>
-                                    <fieldset>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <label for="" class="block">Example</label>
-                                            </div>
-                                            <editor id="example" editor-style="comp">
-                                                <p>Mizzen handsomely long boat bilged on her anchor no prey, no pay fluke prow gangway avast Admiral of the Black bowsprit Jolly Roger bilge water hail-shot poop deck. Barque no prey, no pay yo-ho-ho scuttle swab booty blow the man down ballast knave cog yawl quarter pinnace belay coxswain. American Main lugsail lugger main sheet hulk provost topmast man-of-war belaying pin bilged on her anchor coxswain execution dock aft Shiver me timbers spike.</p> <pre class="prettyprint linenums mt-5 lang-css col-md-8 prettyprinted" style=""><ol class="linenums"><li class="L0"><code></code></li><li class="L1"><code><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L2"><code><span class="pln">    color</span><span class="pun">:</span><span class="pln"> </span><span class="com">#ddd;</span></code></li><li class="L3"><code><span class="pun">}</span></code></li><li class="L4"><code></code></li><li class="L5"><code><span class="com">#id {</span></code></li><li class="L6"><code><span class="pln">    margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="kwd">auto</span><span class="pln"> </span><span class="lit">1em</span><span class="pun">;</span></code></li><li class="L7"><code><span class="pun">}</span></code></li><li class="L8"><code></code></li><li class="L9"><code><span class="pln">element </span><span class="pun">{</span></code></li><li class="L0"><code><span class="pln">    border</span><span class="pun">-</span><span class="pln">radius</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100</span><span class="pun">%;</span></code></li><li class="L1"><code><span class="pun">}</span></code></li><li class="L2"><code><span class="pln">                            </span></code></li></ol></pre>
-                                            </editor>
-                                        </div>
-                                    </fieldset>
-                                </form>
+                                <tutorialform />
                             </section>
                         </div>
                     </div>
@@ -119,9 +76,6 @@
 
     <script>
 
-
-
-
         // $("#verticle-wizard").steps({
         //     headerTag: "h3",
         //     bodyTag: "fieldset",
@@ -130,22 +84,6 @@
         //     autoFocus: true
         // });
 
-
-
-
     </script>
 
 @endsection
-
-<script>
-    import Editor from "../../js/components/Quill";
-    export default {
-        components: {Editor}
-    }
-</script>
-<script>
-    import Editor from "../../js/components/Quill";
-    export default {
-        components: {Editor}
-    }
-</script>

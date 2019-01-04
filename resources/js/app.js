@@ -31,11 +31,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import editor from './components/Quill.vue'
+import tutorialform from './components/TutorialForm.vue'
 
 const app = new Vue({
     el: '#app',
-    components: { editor }
+    components: { tutorialform }
 });
 
 
