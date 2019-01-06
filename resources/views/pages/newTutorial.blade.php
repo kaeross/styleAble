@@ -46,7 +46,7 @@
                     <div class="col-md-12">
                         <div id="wizard">
                             <section>
-                                <tutorialform />
+                                <tutorialform csrf="{{csrf_token()}}" />
                             </section>
                         </div>
                     </div>
@@ -60,30 +60,9 @@
 
 @section('additionalScripts')
 
-    <!-- Form wizard scripts -->
-    {{--<script src="{{asset('js/forms/jquery.steps.js')}}"></script>--}}
-    {{--<script src="{{asset('js/forms/form-wizard.js')}}"></script>--}}
-    {{--<script src="{{asset('js/forms/validate.js')}}"></script>--}}
-
     <!-- UI elements scripts -->
     <script src="{{asset('js/bootstrap/maxlength.js')}}"></script>
     <script src="{{asset('js/UI/switches.js')}}"></script>
 
-
-@endsection
-
-@section('customScripts')
-
-    <script>
-
-        // $("#verticle-wizard").steps({
-        //     headerTag: "h3",
-        //     bodyTag: "fieldset",
-        //     transitionEffect: "slide",
-        //     stepsOrientation: "vertical",
-        //     autoFocus: true
-        // });
-
-    </script>
 
 @endsection

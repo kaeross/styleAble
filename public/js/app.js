@@ -250,11 +250,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tutorialform",
   components: {
     editor: _Quill_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    csrf: {
+      type: String,
+      required: true
+    }
   },
   data: function data() {
     return {
@@ -289,79 +298,121 @@ __webpack_require__.r(__webpack_exports__);
           'align': []
         }]]
       },
-      fieldsets: [{
-        name: 'Basic Information',
-        selected: true,
-        done: false,
-        quill: false,
-        fields: [{
-          name: 'Topic',
-          type: 'text',
-          id: 'topic',
-          maxlength: 20,
-          class: 'form-control threshold-1',
-          placeholder: 'This will be displayed in the navigation so make it snappy!'
-        }, {
-          name: 'Subtitle',
-          type: 'text',
-          id: 'subtitle',
-          maxlength: 25,
-          class: 'form-control threshold-1',
-          placeholder: 'A short taster of what\'s to come...'
-        }]
-      }, {
-        name: 'Overview',
-        selected: false,
-        done: true,
-        quill: true,
-        id: 'overview',
-        toolbar: 'min',
-        content: '<p>Dragée pastry pudding chocolate bar. Wafer marzipan cupcake caramels gingerbread apple pie caramels. Apple pie ice cream brownie.</p>'
-      }, {
-        name: 'Example',
-        selected: false,
-        done: true,
-        quill: true,
-        id: 'example',
-        toolbar: 'comp',
-        content: '<p>Dragée pastry pudding chocolate bar. Wafer marzipan cupcake caramels gingerbread apple pie caramels. Apple pie ice cream brownie.</p>'
-      }]
+      fieldsets: {
+        basicInfo: {
+          name: 'Basic Information',
+          pageIndex: 0,
+          selected: true,
+          done: false,
+          quill: false,
+          fields: {
+            topic: {
+              name: 'Topic',
+              type: 'text',
+              id: 'topic',
+              maxlength: 20,
+              class: 'form-control threshold-1',
+              placeholder: 'This will be displayed in the navigation so make it snappy!',
+              content: ''
+            },
+            subtitle: {
+              name: 'Subtitle',
+              type: 'text',
+              id: 'subtitle',
+              maxlength: 50,
+              class: 'form-control threshold-1',
+              placeholder: 'A short taster of what\'s to come...',
+              content: ''
+            }
+          }
+        },
+        overview: {
+          name: 'Overview',
+          pageIndex: 1,
+          selected: false,
+          done: true,
+          quill: true,
+          id: 'overview',
+          toolbar: 'min',
+          content: ''
+        },
+        example: {
+          name: 'Example',
+          pageIndex: 2,
+          selected: false,
+          done: true,
+          quill: true,
+          id: 'example',
+          toolbar: 'comp',
+          content: ''
+        }
+      }
     };
   },
   computed: {
     endOfSlides: function endOfSlides() {
-      var numFieldsets = this.fieldsets.length;
+      var numFieldsets = Object.keys(this.fieldsets).length;
       return this.selected === numFieldsets - 1;
     }
   },
   mounted: function mounted() {
     var _this = this;
 
+    /* Quill functionality */
     Quill.import('modules/imageResize', ImageResize); // Get each fieldset and create quill editor if quill is true
 
-    this.fieldsets.forEach(function (item) {
-      var fieldset = item;
+    var _loop = function _loop(key) {
+      var fieldset = _this.fieldsets[key];
 
       if (fieldset.quill) {
+        // Set quill modules
         var quill = _this.getQuill(fieldset.id, {
           modules: {
             toolbar: _this.toolbars[fieldset.toolbar],
             imageResize: {}
           },
           theme: 'snow'
-        }, fieldset.content);
+        }, fieldset.content); // Listen for text change
+
 
         quill.on('text-change', function () {
           fieldset.content = quill.container.firstChild.innerHTML;
-          console.log('testing');
         });
       }
-    });
+    };
+
+    for (var key in this.fieldsets) {
+      _loop(key);
+    }
   },
   methods: {
+    /**
+     * Function to handle page selection
+     * Updates the selected data object with the selected page index
+     * Params {Number}
+     * */
+    handlePageSelection: function handlePageSelection(i) {
+      this.selected = i;
+    },
+
+    /*
+    * Function to get fieldset by index
+    * Params { String }
+    * */
+    getPageByIndex: function getPageByIndex(i) {
+      for (var obj in this.fieldsets) {
+        var fieldset = this.fieldsets[obj];
+
+        for (var prop in fieldset) {
+          if (prop === 'pageIndex' && fieldset[prop] === i) {
+            return fieldset;
+          }
+        }
+      }
+    },
     next: function next() {
-      var currentfieldset = this.fieldsets[this.selected];
-      var nextfieldset = this.fieldsets[this.selected + 1];
+      var currentfieldset = this.getPageByIndex(this.selected);
+      var nextfieldset = this.getPageByIndex(this.selected + 1);
       currentfieldset.selected = false; // deselect current fieldset
 
       currentfieldset.done = true; // current fieldset is now done
@@ -371,10 +422,11 @@ __webpack_require__.r(__webpack_exports__);
       nextfieldset.done = false; // next fieldset is not done
 
       this.selected = this.selected + 1;
+      console.log();
     },
     previous: function previous() {
-      var currentfieldset = this.fieldsets[this.selected];
-      var previousfieldset = this.fieldsets[this.selected - 1];
+      var currentfieldset = this.getPageByIndex(this.selected);
+      var previousfieldset = this.getPageByIndex(this.selected - 1);
       currentfieldset.selected = false; // deselect current fieldset
 
       currentfieldset.done = true; // current fieldset is now done
@@ -385,7 +437,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.selected = this.selected - 1;
     },
-    finish: function finish() {},
+    finish: function finish() {
+      document.querySelector('form').submit();
+    },
     getQuill: function getQuill(id, options, content) {
       var quill = new Quill("#".concat(id, "-editor"), options);
       quill.clipboard.dangerouslyPasteHTML(content, 'api');
@@ -408,7 +462,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1568,14 +1622,24 @@ var render = function() {
     "form",
     {
       staticClass: "wizard-form wizard clearfix vertical",
-      attrs: { id: "verticle-wizard", action: "#", role: "application" }
+      attrs: {
+        id: "verticle-wizard",
+        method: "POST",
+        action: "/",
+        role: "application"
+      }
     },
     [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
       _c("div", { staticClass: "steps clearfix" }, [
         _c(
           "ul",
           { attrs: { role: "tablist" } },
-          _vm._l(_vm.fieldsets, function(fieldset, i) {
+          _vm._l(_vm.fieldsets, function(fieldset, key, i) {
             return _c(
               "li",
               {
@@ -1597,7 +1661,7 @@ var render = function() {
                     attrs: { id: "verticle-wizard-t-" + i },
                     on: {
                       click: function($event) {
-                        _vm.selected = i
+                        _vm.handlePageSelection(i)
                       }
                     }
                   },
@@ -1621,7 +1685,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.fieldsets, function(fieldset, i) {
+      _vm._l(_vm.fieldsets, function(fieldset, key, i) {
         return _c(
           "div",
           {
@@ -1654,7 +1718,7 @@ var render = function() {
                       id: "verticle-wizard-p-" + i,
                       role: "tabpanel",
                       "aria-labelledby": "verticle-wizard-h-" + i,
-                      "aria-hidden": "fieldset.selected"
+                      "aria-hidden": fieldset.selected
                     }
                   },
                   [
@@ -1722,7 +1786,7 @@ var render = function() {
                       id: "verticle-wizard-p-" + i,
                       role: "tabpanel",
                       "aria-labelledby": "verticle-wizard-h-" + i,
-                      "aria-hidden": "false"
+                      "aria-hidden": fieldset.selected
                     }
                   },
                   _vm._l(fieldset.fields, function(field) {
@@ -1730,22 +1794,124 @@ var render = function() {
                       _c("div", { staticClass: "col-sm-12" }, [
                         _c(
                           "label",
-                          { staticClass: "block", attrs: { for: "topic" } },
+                          { staticClass: "block", attrs: { for: field.id } },
                           [_vm._v(_vm._s(field.name))]
                         )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-12" }, [
-                        _c("input", {
-                          class: field.class,
-                          attrs: {
-                            id: field.id,
-                            maxlength: field.maxlength,
-                            name: field.id,
-                            type: field.text,
-                            placeholder: field.placeholder
-                          }
-                        })
+                        field.text === "checkbox"
+                          ? _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: field.content,
+                                  expression: "field.content"
+                                }
+                              ],
+                              class: field.class,
+                              attrs: {
+                                id: field.id,
+                                maxlength: field.maxlength,
+                                name: field.id,
+                                placeholder: field.placeholder,
+                                type: "checkbox"
+                              },
+                              domProps: {
+                                checked: Array.isArray(field.content)
+                                  ? _vm._i(field.content, null) > -1
+                                  : field.content
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = field.content,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          field,
+                                          "content",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          field,
+                                          "content",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(field, "content", $$c)
+                                  }
+                                }
+                              }
+                            })
+                          : field.text === "radio"
+                            ? _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: field.content,
+                                    expression: "field.content"
+                                  }
+                                ],
+                                class: field.class,
+                                attrs: {
+                                  id: field.id,
+                                  maxlength: field.maxlength,
+                                  name: field.id,
+                                  placeholder: field.placeholder,
+                                  type: "radio"
+                                },
+                                domProps: {
+                                  checked: _vm._q(field.content, null)
+                                },
+                                on: {
+                                  change: function($event) {
+                                    _vm.$set(field, "content", null)
+                                  }
+                                }
+                              })
+                            : _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: field.content,
+                                    expression: "field.content"
+                                  }
+                                ],
+                                class: field.class,
+                                attrs: {
+                                  id: field.id,
+                                  maxlength: field.maxlength,
+                                  name: field.id,
+                                  placeholder: field.placeholder,
+                                  type: field.text
+                                },
+                                domProps: { value: field.content },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      field,
+                                      "content",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
                       ])
                     ])
                   }),
@@ -1765,45 +1931,41 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c(
-            "li",
-            { class: { disabled: _vm.selected === _vm.fieldsets.length } },
-            [
-              _c(
-                "a",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.endOfSlides,
-                      expression: "!endOfSlides"
-                    }
-                  ],
-                  attrs: { role: "menuitem" },
-                  on: { click: _vm.next }
-                },
-                [_vm._v("Next")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.endOfSlides,
-                      expression: "endOfSlides"
-                    }
-                  ],
-                  attrs: { role: "menuitem" },
-                  on: { click: _vm.finish }
-                },
-                [_vm._v("Finish")]
-              )
-            ]
-          )
+          _c("li", [
+            _c(
+              "a",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.endOfSlides,
+                    expression: "!endOfSlides"
+                  }
+                ],
+                attrs: { role: "menuitem" },
+                on: { click: _vm.next }
+              },
+              [_vm._v("Next")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.endOfSlides,
+                    expression: "endOfSlides"
+                  }
+                ],
+                attrs: { role: "menuitem" },
+                on: { click: _vm.finish }
+              },
+              [_vm._v("Finish")]
+            )
+          ])
         ])
       ])
     ],
@@ -13266,8 +13428,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Kate Ross\Documents\Learning\Laravel\styleAble\styleAble\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Kate Ross\Documents\Learning\Laravel\styleAble\styleAble\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/KateRoss/Documents/GitHub/styleAble/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/KateRoss/Documents/GitHub/styleAble/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

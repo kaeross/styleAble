@@ -19,6 +19,7 @@ class CreateTutorialsTable extends Migration
             $table->string('Topic');
             $table->string('Subtitle');
             $table->string('Overview');
+            $table->string('Example');
         });
     }
 

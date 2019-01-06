@@ -3,6 +3,8 @@
 
 Route::get('/topic/{topic}', 'TutorialsController@getTutorialByTopic');
 
-Route::get('/', 'TutorialsController@topicsList');
+Route::post('/', 'TutorialsController@store');
 
-Route::get('/new', 'TutorialsController@newTutorial');
+Route::get('/', 'TutorialsController@index');
+
+Route::get('/new', 'TutorialsController@create');

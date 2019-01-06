@@ -11,7 +11,7 @@ class TutorialsController extends Controller
         return \App\Tutorial::all();
     }
 
-    public function topicsList() {
+    public function index() {
         return view('pages.topics', ['tutorials' => $this->allTutorials()]);
     }
 
@@ -23,8 +23,21 @@ class TutorialsController extends Controller
             'tutorials' => $this->allTutorials()
         ]);
     }
-    public function newTutorial() {
+    public function create() {
+
+
         return view('pages.newTutorial', ['tutorials' => $this->allTutorials()]);
+    }
+    public function store() {
+
+        $tutorial = new Tutorial();
+
+        $tutorial->topic = request('Topic');
+        $tutorial->subtitle = request('Subtitle');
+        $tutorial->overview = request('Overview');
+        $tutorial->example = request('Example');
+
+        $tutorial->save();
     }
 }
 
