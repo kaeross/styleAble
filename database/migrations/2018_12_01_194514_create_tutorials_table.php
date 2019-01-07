@@ -18,8 +18,8 @@ class CreateTutorialsTable extends Migration
             $table->timestamps();
             $table->string('Topic');
             $table->string('Subtitle');
-            $table->string('Overview');
-            $table->string('Example');
+            $table->longText('Overview');
+            $table->longText('Example');
         });
     }
 
