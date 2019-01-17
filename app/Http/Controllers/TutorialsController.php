@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Tutorial;
+
 class TutorialsController extends Controller
 {
     public function allTutorials()
@@ -11,7 +13,8 @@ class TutorialsController extends Controller
         return \App\Tutorial::all();
     }
 
-    public function index() {
+    public function index()
+    {
         return view('pages.topics', ['tutorials' => $this->allTutorials()]);
     }
 
@@ -19,25 +22,84 @@ class TutorialsController extends Controller
     {
         $tutorial = \App\Tutorial::where('Topic', $topic)->get()->first();
         return view('pages.tutorial', [
-            'tutorialbytopic'=>$tutorial,
+            'tutorialbytopic' => $tutorial,
             'tutorials' => $this->allTutorials()
         ]);
     }
-    public function create() {
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         return view('pages.newTutorial', ['tutorials' => $this->allTutorials()]);
     }
-    public function store() {
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $tutorial = new Tutorial();
 
-        $tutorial->topic = request('Topic');
-        $tutorial->subtitle = request('Subtitle');
-        $tutorial->overview = request('Overview');
-        $tutorial->example = request('Example');
+        $tutorial->Topic = request('Topic');
+        $tutorial->Subtitle = request('Subtitle');
+        $tutorial->Overview = request('Overview');
+        $tutorial->Example = request('Example');
 
         $tutorial->save();
+
+        return $this->index();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
 

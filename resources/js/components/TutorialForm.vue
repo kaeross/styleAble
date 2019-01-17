@@ -1,5 +1,5 @@
 <template>
-    <form class="wizard-form wizard clearfix vertical" id="verticle-wizard" method="POST" action="/" role="application">
+    <form class="wizard-form wizard clearfix vertical" id="verticle-wizard" method="POST" action="/new" role="application">
         <input type="hidden" name="_token" :value="csrf" />
         <div class="steps clearfix">
             <ul role="tablist">
@@ -63,11 +63,9 @@
 </template>
 
 <script>
-    import editor from './Quill.vue';
 
     export default {
         name: "tutorialform",
-        components: {editor},
         props: {
             csrf : {
                 type: String,
@@ -108,7 +106,7 @@
                             topic: {
                                 name: 'Topic',
                                 type: 'text',
-                                id: 'topic',
+                                id: 'Topic',
                                 maxlength: 20,
                                 class: 'form-control threshold-1',
                                 placeholder: 'This will be displayed in the navigation so make it snappy!',
@@ -117,7 +115,7 @@
                             subtitle: {
                                 name: 'Subtitle',
                                 type: 'text',
-                                id: 'subtitle',
+                                id: 'Subtitle',
                                 maxlength: 50,
                                 class: 'form-control threshold-1',
                                 placeholder: 'A short taster of what\'s to come...',
@@ -131,7 +129,7 @@
                         selected: false,
                         done: true,
                         quill: true,
-                        id: 'overview',
+                        id: 'Overview',
                         toolbar: 'min',
                         content: ''
                     },
@@ -141,7 +139,7 @@
                         selected: false,
                         done: true,
                         quill: true,
-                        id: 'example',
+                        id: 'Example',
                         toolbar: 'comp',
                         content: ''
                     }
@@ -160,7 +158,6 @@
 
             Quill.import('modules/imageResize', ImageResize);
             // Get each fieldset and create quill editor if quill is true
-
             for ( let key in this.fieldsets) {
                 const fieldset = this.fieldsets[key];
 
@@ -168,11 +165,12 @@
                     // Set quill modules
                     const quill = this.getQuill(fieldset.id, {
                         modules: {
+                            syntax: true,
                             toolbar: this.toolbars[fieldset.toolbar],
                             imageResize: {}
                         },
                         theme: 'snow'
-                    }, fieldset.content)
+                    }, fieldset.content);
 
                     // Listen for text change
                     quill.on('text-change', () => {
@@ -188,7 +186,8 @@
              * Params {Number}
              * */
             handlePageSelection : function (i) {
-                this.selected = i
+                this.selected = i;
+                this.getPageByIndex(this.selected).selected = true;
             },
             /*
             * Function to get fieldset by index
@@ -215,7 +214,6 @@
                 nextfieldset.done = false; // next fieldset is not done
 
                 this.selected = this.selected + 1;
-                console.log()
             },
             previous: function () {
                 const currentfieldset = this.getPageByIndex(this.selected);

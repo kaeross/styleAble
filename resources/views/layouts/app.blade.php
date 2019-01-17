@@ -24,9 +24,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome-n.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/icofont.css')}}">
     <!-- Chartlist chart css -->
-    <link rel="stylesheet" href="{{asset('css/chartist.css')}}" type="text/css" media="all">
+    {{--<link rel="stylesheet" href="{{asset('css/chartist.css')}}" type="text/css" media="all">--}}
     <!-- Prettify.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/prettify.css')}}">
+
+    <!-- highlight.js stylesheet -->
+    <link href="highlight.js/monokai-sublime.min.css" rel="stylesheet">
+
     <!-- Style.css -->
     @yield('styles')
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
@@ -49,6 +53,8 @@
 <!-- Quill Scripts -->
 <script src="http://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+<!-- Include the highlight.js library -->
+<script href="highlight.js"></script>
 
 <!-- Custom bootstrap -->
 <script type="text/javascript" src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
